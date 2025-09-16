@@ -9,7 +9,7 @@ LabVIEW source is saved with LabVIEW 2023 Q1.
 **Dependencies**
 
 * LabVIEW Worker  
-The example is based on Worker 5.0: [https://www.vipm.io/package/.delacor_lib_dqmh_toolkit/](https://www.vipm.io/package/sc_workers/)
+The example is based on Worker 5.0: [https://www.vipm.io/package/sc_workers/](https://www.vipm.io/package/sc_workers/)
 
 * gRPC LabVIEW libraries and template.  
 You need both the base libraries and the server libraries to run the gRPC code. If you’d like to experiment further with the code and modify the proto file, you’ll also need the template package. A archive containing all the required packages is available on this github release [https://github.com/ni/grpc-labview/releases](https://github.com/ni/grpc-labview/releases).
