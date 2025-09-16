@@ -1,0 +1,54 @@
+// Simple Stream AI
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.simple.streamai";
+option java_outer_classname = "StreamAIProto";
+option objc_class_prefix = "SAI";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package streamai;
+
+// Interface exported by the server.
+service streamai {
+
+    rpc startacq(google.protobuf.Empty) returns (stream waveform) {}
+
+    rpc stopacq(google.protobuf.Empty) returns (status) {}
+
+    rpc setSignalConfig(signalConfig) returns (google.protobuf.Empty) {}
+
+    rpc setSamplingConfig(samplingConfig) returns (google.protobuf.Empty) {}
+
+}
+
+message waveform {
+  google.protobuf.Timestamp t0 = 1;
+  double delta_t = 2;
+  repeated double values= 3;
+}
+
+message status {
+    bool acquisition = 1;
+}
+
+enum SignalType {
+    SIGNAL_SINE = 0;
+    SIGNAL_SQUARE = 1;
+}
+
+message signalConfig {
+    SignalType type = 1;
+    double offset = 2;
+    double frequency = 3;
+    double amplitude = 4;
+}
+
+message samplingConfig{
+    double sample_rate = 1;
+    int32 num_sample = 2;
+
+}
